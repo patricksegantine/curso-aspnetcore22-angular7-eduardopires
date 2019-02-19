@@ -1,0 +1,9 @@
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.deps.json
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.dll
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.pdb
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.csprojAssemblyReference.cache
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.csproj.CoreCompileInputs.cache
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.AssemblyInfoInputs.cache
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.AssemblyInfo.cs
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.dll
+C:\CursoNetCore\Eventos.IO\Eventos.IO.Infra.CrossCuting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCuting.AspNetFilters.pdb

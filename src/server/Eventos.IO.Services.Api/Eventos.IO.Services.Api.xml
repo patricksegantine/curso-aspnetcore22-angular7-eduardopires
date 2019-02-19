@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Eventos.IO.Services.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Eventos.IO.Services.Api.Configurations.RouteConvention.Apply(Microsoft.AspNetCore.Mvc.ApplicationModels.ApplicationModel)">
+            <summary>
+            Aplica em todos os Controllers a conveção da aplicação
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.AccountController.ThrowIfInvalidConfirations(Eventos.IO.Infra.CrossCutting.Identity.Security.JwtTokenConfigurations)">
+            <summary>
+            Valida se o token
+            </summary>
+            <param name=""></param>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.AccountController.GerarTokenUsuario(Eventos.IO.Infra.CrossCutting.Identity.Models.AccountViewModels.LoginViewModel)">
+            <summary>
+            Gera o token do usuário
+            </summary>
+            <param name="loginViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.AccountController.AdicionarErrosIdentity(Microsoft.AspNetCore.Identity.IdentityResult)">
+            <summary>
+            Adiciona os erros capturadores no login ao objeto ao objeto de notificação
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.BaseController.Response(System.Object)">
+            <summary>
+            Objeto de resposta às requisições
+            </summary>
+            <param name="result">Qualquer objeto de retorno</param>
+            <returns></returns>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.BaseController.OperacaoValida">
+            <summary>
+            Verifica se ocorrou algum erro de Domínio
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.BaseController.NotificarErroModelStateInvalido">
+            <summary>
+            Notifica os erros de estado de modelos
+            </summary>
+        </member>
+        <member name="M:Eventos.IO.Services.Api.Controllers.BaseController.NotificarErro(System.String,System.String)">
+            <summary>
+            Notifica os erros ocorridos no Domínio
+            </summary>
+            <param name="codigo"></param>
+            <param name="mensagem"></param>
+        </member>
+    </members>
+</doc>
