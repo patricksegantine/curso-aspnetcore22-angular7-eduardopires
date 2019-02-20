@@ -1,18 +1,19 @@
-﻿using AutoMapper;
-using Eventos.IO.Infra.CrossCutting.AspNetFilters;
-using Eventos.IO.Infra.CrossCutting.Bus;
+﻿using Eventos.IO.Infra.CrossCutting.AspNetFilters;
 using Eventos.IO.Infra.CrossCutting.Identity.Data;
 using Eventos.IO.Services.Api.Configurations;
 using Eventos.IO.Services.Api.Middleares;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
+using AutoMapper;
+using MediatR;
 
 namespace Eventos.IO.Services.Api
 {
@@ -51,15 +52,6 @@ namespace Eventos.IO.Services.Api
             {
                 options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
                 options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalActionLoggerFilter)));
-
-                //// Policy de configuração do Token
-                //var policy = new AuthorizationPolicyBuilder()
-                //    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                //    .RequireAuthenticatedUser()
-                //    .Build();
-
-                //// Adiciona a policy no filtro de autenticação
-                //options.Filters.Add(new AuthorizeFilter(policy));
             }).AddJsonOptions(options =>
             {
                 // remove valores nulos do retorno da API
@@ -77,13 +69,13 @@ namespace Eventos.IO.Services.Api
 
             services.AddHttpContextAccessor();
 
+            services.AddMediatR();
+
             // Registrar todos os DI
             services.AddDIConfig();
         }
 
-        public void Configure(IApplicationBuilder app,
-                              IHostingEnvironment env,
-                              IHttpContextAccessor accessor)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             #region Configurações MVC
 
@@ -126,9 +118,6 @@ namespace Eventos.IO.Services.Api
             });
 
             #endregion
-
-            InMemoryBus.ContainerAccessor = () => accessor.HttpContext.RequestServices;
         }
-
     }
 }

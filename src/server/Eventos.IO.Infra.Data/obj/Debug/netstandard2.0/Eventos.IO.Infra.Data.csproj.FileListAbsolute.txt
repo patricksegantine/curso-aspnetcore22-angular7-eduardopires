@@ -27,3 +27,17 @@ C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Ev
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csproj.CopyComplete
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.dll
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csprojAssemblyReference.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csproj.CoreCompileInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.AssemblyInfoInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.AssemblyInfo.cs
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Infra.Data.deps.json
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Infra.Data.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Infra.Data.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csproj.CopyComplete
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.pdb

@@ -1,9 +1,11 @@
-﻿using Eventos.IO.Domain.Core.Bus;
+﻿using System;
+using System.Linq;
+
 using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Interfaces;
+
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 
 namespace Eventos.IO.Services.Api.Controllers
 {
@@ -11,22 +13,20 @@ namespace Eventos.IO.Services.Api.Controllers
     [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {
-        private readonly IDomainNotificationHandler<DomainNotification> _notifications;
-        private readonly IBus _bus;
-        private readonly IUser _user;
+        private readonly DomainNotificationHandler _notifications;
+        private readonly IMediatorHandler _mediator;
 
         protected Guid OrganizadorId { get; set; }
 
         protected BaseController(
-            IDomainNotificationHandler<DomainNotification> notifications,
-            IBus bus,
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator,
             IUser user)
         {
-            _notifications = notifications;
-            _bus = bus;
-            _user = user;
+            _notifications = (DomainNotificationHandler)notifications;
+            _mediator = mediator;
 
-            if (_user.IsAuthenticated())
+            if (user.IsAuthenticated())
             {
                 OrganizadorId = user.GetUserId();
             }
@@ -84,7 +84,7 @@ namespace Eventos.IO.Services.Api.Controllers
         /// <param name="mensagem"></param>
         protected void NotificarErro(string codigo, string mensagem)
         {
-            _bus.RaiseEvent(new DomainNotification(codigo, mensagem));
+            _mediator.RaiseEvent(new DomainNotification(codigo, mensagem));
         }
     }
 }

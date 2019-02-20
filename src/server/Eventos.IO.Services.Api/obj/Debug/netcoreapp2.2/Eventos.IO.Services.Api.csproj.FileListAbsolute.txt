@@ -30,3 +30,9 @@ C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\E
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csproj.CopyComplete
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.dll
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csprojAssemblyReference.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csproj.CoreCompileInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.RazorAssemblyInfo.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.RazorAssemblyInfo.cs
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.AssemblyInfoInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.AssemblyInfo.cs

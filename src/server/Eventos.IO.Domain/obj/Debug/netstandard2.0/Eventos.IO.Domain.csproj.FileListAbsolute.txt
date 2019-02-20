@@ -22,3 +22,15 @@ C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Domain\obj\Debug\netstandard2.0\Evento
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csprojAssemblyReference.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CoreCompileInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfoInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfo.cs
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.deps.json
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb

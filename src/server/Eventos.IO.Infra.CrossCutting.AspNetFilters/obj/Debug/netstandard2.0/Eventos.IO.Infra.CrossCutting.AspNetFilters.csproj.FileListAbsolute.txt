@@ -7,3 +7,12 @@ C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\D
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfo.cs
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.deps.json
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.csprojAssemblyReference.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj.CoreCompileInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfoInputs.cache
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfo.cs
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb

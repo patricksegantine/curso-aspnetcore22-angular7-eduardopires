@@ -1,10 +1,10 @@
-﻿using Eventos.IO.Domain.Core.Bus;
-using Eventos.IO.Domain.Core.Notifications;
+﻿using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Interfaces;
 using Eventos.IO.Domain.Organizadores.Commands;
 using Eventos.IO.Infra.CrossCutting.Identity.Models;
 using Eventos.IO.Infra.CrossCutting.Identity.Models.AccountViewModels;
 using Eventos.IO.Infra.CrossCutting.Identity.Security;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -24,7 +23,7 @@ namespace Eventos.IO.Services.Api.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger _logger;
-        private readonly IBus _bus;
+        private readonly IMediatorHandler _mediator;
 
         private readonly JwtTokenConfigurations _jwtTokenConfigurations;
         private readonly SigningCredentialsConfigurations _signingConfigurations;
@@ -35,13 +34,13 @@ namespace Eventos.IO.Services.Api.Controllers
             ILoggerFactory loggerFactory,
             [FromServices]JwtTokenConfigurations jwtTokenConfigurations,
             [FromServices]SigningCredentialsConfigurations signingConfigurations,
-            IDomainNotificationHandler<DomainNotification> notifications,
-            IBus bus,
-            IUser user) : base(notifications, bus, user)
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator,
+            IUser user) : base(notifications, mediator, user)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _bus = bus;
+            _mediator = mediator;
             _logger = loggerFactory.CreateLogger<AccountController>();
             _jwtTokenConfigurations = jwtTokenConfigurations;
             _signingConfigurations = signingConfigurations;
@@ -50,9 +49,9 @@ namespace Eventos.IO.Services.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("nova-conta")]
-        public async Task<IActionResult> Register([FromBody] RegisterViewModel model, int version)
+        public async Task<IActionResult> Register(RegisterViewModel model, int version)
         {
-            if (!ModelState.IsValid) return Response(model);
+            if (version == 2) return Response(new { Message = "API V2 não disponível" });
 
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
@@ -70,7 +69,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
                 // Executando o papel da Camada de Application
                 var registroCommand = new RegistrarOrganizadorCommand(Guid.Parse(user.Id), model.Nome, model.CpfCnpj, model.Email);
-                _bus.SendCommand(registroCommand);
+                _mediator.SendCommand(registroCommand);
 
                 if (!OperacaoValida())
                 {
@@ -94,7 +93,7 @@ namespace Eventos.IO.Services.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -177,7 +176,7 @@ namespace Eventos.IO.Services.Api.Controllers
         {
             foreach (var error in result.Errors)
             {
-                _bus.RaiseEvent(new DomainNotification(result.ToString(), error.Description));
+                _mediator.RaiseEvent(new DomainNotification(result.ToString(), error.Description));
             }
         }
 

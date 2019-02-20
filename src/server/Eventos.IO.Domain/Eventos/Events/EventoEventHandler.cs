@@ -1,40 +1,51 @@
-﻿using Eventos.IO.Domain.Core.Events;
+﻿using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Eventos.IO.Domain.Eventos.Events
 {
     public class EventoEventHandler :
-        IHandler<EventoRegistradoEvent>,
-        IHandler<EventoAtualizadoEvent>,
-        IHandler<EventoExcluidoEvent>,
-        IHandler<EnderecoEventoIncluidoEvent>,
-        IHandler<EnderecoEventoAtualizadoEvent>
+        INotificationHandler<EventoRegistradoEvent>,
+        INotificationHandler<EventoAtualizadoEvent>,
+        INotificationHandler<EventoExcluidoEvent>,
+        INotificationHandler<EnderecoEventoIncluidoEvent>,
+        INotificationHandler<EnderecoEventoAtualizadoEvent>
     {
-        public void Handle(EventoRegistradoEvent message)
+
+        public Task Handle(EventoRegistradoEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // TODO: Disparar alguma ação
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(EventoAtualizadoEvent message)
+        public Task Handle(EventoAtualizadoEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // TODO: Disparar alguma ação
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(EventoExcluidoEvent message)
+        public Task Handle(EventoExcluidoEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // TODO: Disparar alguma ação
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(EnderecoEventoIncluidoEvent message)
+        public Task Handle(EnderecoEventoIncluidoEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // TODO: Disparar alguma ação
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(EnderecoEventoAtualizadoEvent message)
+        public Task Handle(EnderecoEventoAtualizadoEvent notification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            // TODO: Disparar alguma ação
+
+            return Task.CompletedTask;
         }
 
     }

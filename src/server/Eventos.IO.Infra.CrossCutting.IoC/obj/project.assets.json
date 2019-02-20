@@ -2,19 +2,6 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "AutoMapper/7.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "System.ValueTuple": "4.5.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/AutoMapper.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AutoMapper.dll": {}
-        }
-      },
       "Dapper/1.50.5": {
         "type": "package",
         "dependencies": {
@@ -39,6 +26,28 @@
         },
         "runtime": {
           "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "MediatR/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.dll": {}
+        }
+      },
+      "MediatR.Extensions.Microsoft.DependencyInjection/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "MediatR": "6.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -2445,15 +2454,6 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "System.ValueTuple/4.5.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/_._": {}
-        }
-      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2552,22 +2552,6 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Eventos.IO.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Eventos.IO.Domain": "1.0.0",
-          "Eventos.IO.Domain.Core": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
-          "automapper": "7.0.1"
-        },
-        "compile": {
-          "bin/placeholder/Eventos.IO.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Eventos.IO.Application.dll": {}
-        }
-      },
       "Eventos.IO.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -2587,7 +2571,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "FluentValidation": "8.1.2"
+          "FluentValidation": "8.1.2",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "6.0.1"
         },
         "compile": {
           "bin/placeholder/Eventos.IO.Domain.Core.dll": {}
@@ -2613,19 +2598,6 @@
         },
         "runtime": {
           "bin/placeholder/Eventos.IO.Infra.CrossCutting.AspNetFilters.dll": {}
-        }
-      },
-      "Eventos.IO.Infra.CrossCutting.Bus/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Eventos.IO.Domain.Core": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Eventos.IO.Infra.CrossCutting.Bus.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Eventos.IO.Infra.CrossCutting.Bus.dll": {}
         }
       },
       "Eventos.IO.Infra.CrossCutting.Identity/1.0.0": {
@@ -2676,29 +2648,6 @@
     }
   },
   "libraries": {
-    "AutoMapper/7.0.1": {
-      "sha512": "1qKMJ1WPs42VkgeQ5iXRDWf46+iUqYM/yColAvAeDQhUgQNsgzSxjMDHQc7dL2x/o0JY8TwG+obR7vbvgh+Y3g==",
-      "type": "package",
-      "path": "automapper/7.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "automapper.7.0.1.nupkg.sha512",
-        "automapper.nuspec",
-        "lib/net45/AutoMapper.dll",
-        "lib/net45/AutoMapper.pdb",
-        "lib/net45/AutoMapper.xml",
-        "lib/netcoreapp2.0/AutoMapper.dll",
-        "lib/netcoreapp2.0/AutoMapper.pdb",
-        "lib/netcoreapp2.0/AutoMapper.xml",
-        "lib/netstandard1.3/AutoMapper.dll",
-        "lib/netstandard1.3/AutoMapper.pdb",
-        "lib/netstandard1.3/AutoMapper.xml",
-        "lib/netstandard2.0/AutoMapper.dll",
-        "lib/netstandard2.0/AutoMapper.pdb",
-        "lib/netstandard2.0/AutoMapper.xml"
-      ]
-    },
     "Dapper/1.50.5": {
       "sha512": "AzAdZ9fEzUtav3Sbc5CMgz5O2oYkc5g1r+g1h/Vn+wqcInII+xtNEfyZryeW90Wq72bxjEBJhe18j+2SrGrc5A==",
       "type": "package",
@@ -2733,6 +2682,31 @@
         "lib/netstandard1.6/FluentValidation.xml",
         "lib/netstandard2.0/FluentValidation.dll",
         "lib/netstandard2.0/FluentValidation.xml"
+      ]
+    },
+    "MediatR/6.0.0": {
+      "sha512": "nQrQ4Ngy5eyS6Oi53e9oreZ8hl6RJOv8ohNExA/QZdnshLySsVUEAAqTDIEOobjPzwQ2itTB5fukdfRV4eGbQQ==",
+      "type": "package",
+      "path": "mediatr/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/MediatR.dll",
+        "lib/netstandard2.0/MediatR.dll",
+        "mediatr.6.0.0.nupkg.sha512",
+        "mediatr.nuspec"
+      ]
+    },
+    "MediatR.Extensions.Microsoft.DependencyInjection/6.0.1": {
+      "sha512": "sbgLhEJv6TyO4pd2MVMx+1qEpU0POrFOswRLNmYgULU2Rig0j8pFd0gLLxkjfymnTJrRVQT0D/E7Unyds7+oGw==",
+      "type": "package",
+      "path": "mediatr.extensions.microsoft.dependencyinjection/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll",
+        "mediatr.extensions.microsoft.dependencyinjection.6.0.1.nupkg.sha512",
+        "mediatr.extensions.microsoft.dependencyinjection.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -4618,7 +4592,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.5.0": {
-      "sha512": "IjDa643EO77A4CL9dhxfZ6zzGu+pM8Ar0NYPRMN3TvDiga4uGDzFHOj/ArpyNxxKyO5IFT2LZ0rK3kUog7g3jA==",
+      "sha512": "UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
       "type": "package",
       "path": "system.componentmodel.annotations/4.5.0",
       "files": [
@@ -8010,50 +7984,6 @@
         "version.txt"
       ]
     },
-    "System.ValueTuple/4.5.0": {
-      "sha512": "xZtSZNEHGa+tGsKuP4sh257vxJ/yemShz4EusmomkynMzuEDDjVaErBNewpzEF6swUgbcrSQAX3ELsEp1zCOwA==",
-      "type": "package",
-      "path": "system.valuetuple/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.ValueTuple.dll",
-        "lib/net461/System.ValueTuple.xml",
-        "lib/net47/System.ValueTuple.dll",
-        "lib/net47/System.ValueTuple.xml",
-        "lib/netcoreapp2.0/_._",
-        "lib/netstandard1.0/System.ValueTuple.dll",
-        "lib/netstandard1.0/System.ValueTuple.xml",
-        "lib/netstandard2.0/_._",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
-        "lib/uap10.0.16299/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.ValueTuple.dll",
-        "ref/net47/System.ValueTuple.dll",
-        "ref/netcoreapp2.0/_._",
-        "ref/netstandard2.0/_._",
-        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
-        "ref/uap10.0.16299/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.valuetuple.4.5.0.nupkg.sha512",
-        "system.valuetuple.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Xml.ReaderWriter/4.3.0": {
       "sha512": "mREBSX+9OeQ/wwbKKApGUxiGivqNsfNLuHwmb+YfDIGg7DSnl7I27oI71g0RSbdZLe+W/gRKu1EYWO//6JDC5g==",
       "type": "package",
@@ -8304,11 +8234,6 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Eventos.IO.Application/1.0.0": {
-      "type": "project",
-      "path": "../Eventos.IO.Application/Eventos.IO.Application.csproj",
-      "msbuildProject": "../Eventos.IO.Application/Eventos.IO.Application.csproj"
-    },
     "Eventos.IO.Domain/1.0.0": {
       "type": "project",
       "path": "../Eventos.IO.Domain/Eventos.IO.Domain.csproj",
@@ -8324,11 +8249,6 @@
       "path": "../Eventos.IO.Infra.CrossCutting.AspNetFilters/Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj",
       "msbuildProject": "../Eventos.IO.Infra.CrossCutting.AspNetFilters/Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj"
     },
-    "Eventos.IO.Infra.CrossCutting.Bus/1.0.0": {
-      "type": "project",
-      "path": "../Eventos.IO.Infra.CrossCutting.Bus/Eventos.IO.Infra.CrossCutting.Bus.csproj",
-      "msbuildProject": "../Eventos.IO.Infra.CrossCutting.Bus/Eventos.IO.Infra.CrossCutting.Bus.csproj"
-    },
     "Eventos.IO.Infra.CrossCutting.Identity/1.0.0": {
       "type": "project",
       "path": "../Eventos.IO.Infra.CrossCutting.Identity/Eventos.IO.Infra.CrossCutting.Identity.csproj",
@@ -8342,10 +8262,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Eventos.IO.Application >= 1.0.0",
       "Eventos.IO.Domain >= 1.0.0",
       "Eventos.IO.Infra.CrossCutting.AspNetFilters >= 1.0.0",
-      "Eventos.IO.Infra.CrossCutting.Bus >= 1.0.0",
       "Eventos.IO.Infra.CrossCutting.Identity >= 1.0.0",
       "Eventos.IO.Infra.Data >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 2.2.0",
@@ -8359,11 +8277,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.IoC\\Eventos.IO.Infra.CrossCutting.IoC.csproj",
+      "projectUniqueName": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.IoC\\Eventos.IO.Infra.CrossCutting.IoC.csproj",
       "projectName": "Eventos.IO.Infra.CrossCutting.IoC",
-      "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.IoC\\Eventos.IO.Infra.CrossCutting.IoC.csproj",
+      "projectPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.IoC\\Eventos.IO.Infra.CrossCutting.IoC.csproj",
       "packagesPath": "C:\\Users\\Ebase\\.nuget\\packages\\",
-      "outputPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.IoC\\obj\\",
+      "outputPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.IoC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8382,23 +8300,17 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Application\\Eventos.IO.Application.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Application\\Eventos.IO.Application.csproj"
+            "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Domain\\Eventos.IO.Domain.csproj": {
+              "projectPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Domain\\Eventos.IO.Domain.csproj"
             },
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Domain\\Eventos.IO.Domain.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Domain\\Eventos.IO.Domain.csproj"
+            "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.AspNetFilters\\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj": {
+              "projectPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.AspNetFilters\\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj"
             },
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.AspNetFilters\\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.AspNetFilters\\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj"
+            "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.Identity\\Eventos.IO.Infra.CrossCutting.Identity.csproj": {
+              "projectPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.CrossCutting.Identity\\Eventos.IO.Infra.CrossCutting.Identity.csproj"
             },
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.Bus\\Eventos.IO.Infra.CrossCutting.Bus.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.Bus\\Eventos.IO.Infra.CrossCutting.Bus.csproj"
-            },
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.Identity\\Eventos.IO.Infra.CrossCutting.Identity.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.CrossCutting.Identity\\Eventos.IO.Infra.CrossCutting.Identity.csproj"
-            },
-            "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.Data\\Eventos.IO.Infra.Data.csproj": {
-              "projectPath": "C:\\CursoNetCore\\Eventos.IO\\src\\Eventos.IO.Infra.Data\\Eventos.IO.Infra.Data.csproj"
+            "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.Data\\Eventos.IO.Infra.Data.csproj": {
+              "projectPath": "F:\\GitHub\\CursoAspNetCore22-Angular7-R\\src\\server\\Eventos.IO.Infra.Data\\Eventos.IO.Infra.Data.csproj"
             }
           }
         }

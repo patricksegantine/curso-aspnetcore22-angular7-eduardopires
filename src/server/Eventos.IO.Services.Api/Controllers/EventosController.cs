@@ -1,32 +1,33 @@
-﻿using AutoMapper;
-using Eventos.IO.Domain.Core.Bus;
+﻿using System;
+using System.Collections.Generic;
+
+using Eventos.IO.Api.ViewModels;
 using Eventos.IO.Domain.Core.Notifications;
-using Eventos.IO.Domain.Eventos;
 using Eventos.IO.Domain.Eventos.Commands;
 using Eventos.IO.Domain.Eventos.Repository;
 using Eventos.IO.Domain.Interfaces;
+
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 namespace Eventos.IO.Services.Api.Controllers
 {
     public class EventosController : BaseController
     {
-        private readonly IBus _bus;
+        private readonly IMediatorHandler _mediator;
         private readonly IEventoRepository _eventoRepository;
         private readonly IMapper _mapper;
 
-        // aula 19 - 2h51min
         public EventosController(
-            IDomainNotificationHandler<DomainNotification> notifications,
-            IBus bus,
-            IUser user, 
-            IEventoRepository eventoRepository, //IEventoAppService eventoAppService,
-            IMapper mapper) : base(notifications, bus, user)
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator,
+            IEventoRepository eventoRepository,
+            IMapper mapper,
+            IUser user) : base(notifications, mediator, user)
         {
-            _bus = bus;
+            _mediator = mediator;
             _eventoRepository = eventoRepository;
             _mapper = mapper;
         }
@@ -34,60 +35,79 @@ namespace Eventos.IO.Services.Api.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("eventos")]
-        public IEnumerable<Evento> ObterTodos()
+        public IEnumerable<EventoViewModel> Get()
         {
-            // Se a camada de apresentação for somente 
-            // em SPA, NÃO USAR  a camada de Application 
-            // e mover as responsabilidades para a Controller
-            return _eventoRepository.ObterTodos();
+            return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterTodos());
         }
 
         [HttpGet]
         [AllowAnonymous]
         [Route("eventos/{id:guid}")]
-        public Evento Get(Guid id, int version)
+        public EventoViewModel Get(Guid id, int version)
         {
-            return _eventoRepository.ObterPorId(id);
+            return _mapper.Map<EventoViewModel>(_eventoRepository.ObterPorId(id));
         }
 
         [HttpGet]
         [AllowAnonymous]
         [Route("eventos/categorias")]
-        public IEnumerable<Categoria> ObterCategorias()
+        public IEnumerable<CategoriaViewModel> ObterCategorias()
         {
-            // Caso estive usando a camada Application
-            //return _mapper.Map<IEnumerable<CategoriaViewModel>>(_eventoRepository.ObterCategorias());
+            return _mapper.Map<IEnumerable<CategoriaViewModel>>(_eventoRepository.ObterCategorias());
+        }
 
-            return _eventoRepository.ObterCategorias();
+        [HttpGet]
+        [Authorize(Policy = "PodeConsultarEventos")]
+        [Route("eventos/meus-eventos")]
+        public IEnumerable<EventoViewModel> ObterMeusEventos()
+        {
+            // NOTA: OrganizadorId está na classe base e 
+            // é recuperado pelo TOKEN
+            return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterEventoPorOrganizador(OrganizadorId));
+        }
+
+        [HttpGet]
+        [Authorize(Policy = "PodeConsultarEventos")]
+        [Route("eventos/meus-eventos/{id:guid}")]
+        public IActionResult ObterMeuEventoPorId(Guid id)
+        {
+            var evento = _mapper.Map<EventoViewModel>(_eventoRepository.ObterMeuEventoPorId(id, OrganizadorId));
+            return evento == null ? StatusCode(404) : Response(evento);
         }
 
         [HttpPost]
         [Route("eventos")]
         [Authorize(Policy = "PodeGravar")]
-        public IActionResult Post([FromBody]RegistrarEventoCommand eventoCommand)
+        public IActionResult Post(EventoViewModel eventoViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                NotificarErroModelStateInvalido();
-                return Response();
-            }
+            // o atributo ApiController veio para simplificar a codificação de Controllers...
+            // 1) O parâmetro eventoViewModel não foi marcado com FromBody, já que 
+            // a presença do atributo ApiController torna possível inferir que 
+            // o conteúdo associado a este elemento se encontra no corpo de uma requisição;
+            // 2) A instrução que checa o conteúdo da propriedade IsValid no objeto 
+            // ModelState também foi removida. Qualquer inconsistência decorrente 
+            // de violação das regras nas Data Annotations da classe Comentario irá 
+            // resultar na geração automática de um erro do tipo 400 (Bad Request).
+            //if (!ModelState.IsValid)
+            //{
+            //    NotificarErroModelStateInvalido();
+            //    return Response();
+            //}
 
-            // Registra o evento
-            _bus.SendCommand(eventoCommand);
+            var eventoCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
+
+            _mediator.SendCommand(eventoCommand);
             return Response(eventoCommand);
         }
 
         [HttpPut]
         [Route("eventos")]
         [Authorize(Policy = "PodeGravar")]
-        public IActionResult Put([FromBody]AtualizarEventoCommand eventoCommand)
+        public IActionResult Put(EventoViewModel eventoViewModel)
         {
-            // Atualiza o evento
+            var eventoCommand = _mapper.Map<AtualizarEventoCommand>(eventoViewModel);
 
-            // Caso estive usando a camada Application
-            //_eventoRepository.Atualizar(eventoCommand);
-
-            _bus.SendCommand(eventoCommand);
+            _mediator.SendCommand(eventoCommand);
             return Response(eventoCommand);
         }
 
@@ -96,8 +116,32 @@ namespace Eventos.IO.Services.Api.Controllers
         [Authorize(Policy = "PodeExcluir")]
         public IActionResult Delete(Guid id)
         {
-            _bus.SendCommand(new ExcluirEventoCommand(id));
+            var eventoCommand = new ExcluirEventoCommand(id);
+
+            _mediator.SendCommand(new ExcluirEventoCommand(id));
             return Response();
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "PodeGravar")]
+        [Route("endereco")]
+        public IActionResult Post(EnderecoViewModel enderecoViewModel)
+        {
+            var eventoCommand = _mapper.Map<IncluirEnderecoEventoCommand>(enderecoViewModel);
+
+            _mediator.SendCommand(eventoCommand);
+            return Response(eventoCommand);
+        }
+
+        [HttpPut]
+        [Authorize(Policy = "PodeGravar")]
+        [Route("endereco")]
+        public IActionResult Put(EnderecoViewModel enderecoViewModel)
+        {
+            var eventoCommand = _mapper.Map<AtualizarEnderecoEventoCommand>(enderecoViewModel);
+
+            _mediator.SendCommand(eventoCommand);
+            return Response(eventoCommand);
         }
     }
 }

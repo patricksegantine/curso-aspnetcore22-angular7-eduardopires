@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MediatR;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Eventos.IO.Domain.Core.Notifications
 {
-    public class DomainNotificationHandler : IDomainNotificationHandler<DomainNotification>
+    public class DomainNotificationHandler : INotificationHandler<DomainNotification>
     {
         private List<DomainNotification> _notifications;
 
@@ -12,17 +15,19 @@ namespace Eventos.IO.Domain.Core.Notifications
             _notifications = new List<DomainNotification>();
         }
 
-        public List<DomainNotification> GetNotifications()
+        public Task Handle(DomainNotification message, CancellationToken cancellationToken)
+        {
+            _notifications.Add(message);
+
+            return Task.CompletedTask;
+        }
+
+        public virtual List<DomainNotification> GetNotifications()
         {
             return _notifications;
         }
 
-        public void Handle(DomainNotification message)
-        {
-            _notifications.Add(message);
-        }
-
-        public bool HasNotifications()
+        public virtual bool HasNotifications()
         {
             return _notifications.Any();
         }

@@ -1,46 +1,48 @@
-﻿using Eventos.IO.Domain.CommandHandlers;
-using Eventos.IO.Domain.Core.Bus;
-using Eventos.IO.Domain.Core.Events;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Eventos.IO.Domain.CommandHandlers;
 using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Eventos.IO.Domain.Organizadores.Events;
+
+using MediatR;
 
 namespace Eventos.IO.Domain.Organizadores.Commands
 {
-    public class OrganizadorCommandHandler : CommandHandler, IHandler<RegistrarOrganizadorCommand>
+    public class OrganizadorCommandHandler : CommandHandler,
+        IRequestHandler<RegistrarOrganizadorCommand, bool>
     {
-        private readonly IBus _bus;
+        private readonly IMediatorHandler _mediator;
         private readonly IOrganizadorRepository _organizadorRepository;
 
         public OrganizadorCommandHandler(
-            IUnitOfWork uow, 
-            IBus bus, 
-            IDomainNotificationHandler<DomainNotification> notifications,
-            IOrganizadorRepository organizadorRepository) : base(uow, bus, notifications)
+            IUnitOfWork uow,
+            IMediatorHandler mediator,
+            INotificationHandler<DomainNotification> notifications,
+            IOrganizadorRepository organizadorRepository) : base(uow, mediator, notifications)
         {
-            _bus = bus;
+            _mediator = mediator;
             _organizadorRepository = organizadorRepository;
         }
 
-        public void Handle(RegistrarOrganizadorCommand message)
+        public Task<bool> Handle(RegistrarOrganizadorCommand message, CancellationToken cancellationToken)
         {
             var organizador = new Organizador(message.Id, message.Nome, message.CpfCnpj, message.Email);
 
             if (!organizador.IsValid())
             {
-                NotificarValidacoesErro(organizador.ValidationResult);
-                return;
+                NotifyValidationErrors(organizador.ValidationResult);
+                return Task.FromResult(false);
             }
 
             // Valida cpf e email duplicados
             var organizadorExistente = _organizadorRepository.Buscar(o => o.CpfCnpj == organizador.CpfCnpj || o.Email == organizador.Email);
-            if(organizadorExistente.Any())
+            if (organizadorExistente.Any())
             {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType, "CPF/CNPJ ou e-mail já utilizados"));
-                return;
+                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "CPF/CNPJ ou e-mail já utilizados"));
+                return Task.FromResult(false);
             }
 
             // inclui no repositório
@@ -48,8 +50,10 @@ namespace Eventos.IO.Domain.Organizadores.Commands
 
             if (Commit())
             {
-                //_bus.RaiseEvent();
+                _mediator.RaiseEvent(new OrganizadorRegistradoEvent(organizador.Id, organizador.Nome, organizador.CpfCnpj, organizador.Email));
             }
+
+            return Task.FromResult(true);
         }
     }
 }

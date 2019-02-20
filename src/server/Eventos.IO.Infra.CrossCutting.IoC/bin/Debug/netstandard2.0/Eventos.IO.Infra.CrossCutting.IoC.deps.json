@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "e6b9252a007900e8ca53dc0f5731cf06fb5452ea"
+    "signature": "826110bcf85e6eaa12bca596d0fd73c43f55d438"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,10 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "Eventos.IO.Infra.CrossCutting.IoC/1.0.0": {
         "dependencies": {
-          "Eventos.IO.Application": "1.0.0",
           "Eventos.IO.Domain": "1.0.0",
           "Eventos.IO.Infra.CrossCutting.AspNetFilters": "1.0.0",
-          "Eventos.IO.Infra.CrossCutting.Bus": "1.0.0",
           "Eventos.IO.Infra.CrossCutting.Identity": "1.0.0",
           "Eventos.IO.Infra.Data": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
@@ -20,18 +18,6 @@
         },
         "runtime": {
           "Eventos.IO.Infra.CrossCutting.IoC.dll": {}
-        }
-      },
-      "AutoMapper/7.0.1": {
-        "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
-          "System.ValueTuple": "4.5.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/AutoMapper.dll": {
-            "assemblyVersion": "7.0.1.0",
-            "fileVersion": "7.0.1.0"
-          }
         }
       },
       "Dapper/1.50.5": {
@@ -55,6 +41,26 @@
           "lib/netstandard2.0/FluentValidation.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.1.2.0"
+          }
+        }
+      },
+      "MediatR/6.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/MediatR.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "MediatR.Extensions.Microsoft.DependencyInjection/6.0.1": {
+        "dependencies": {
+          "MediatR": "6.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
           }
         }
       },
@@ -1941,7 +1947,6 @@
           }
         }
       },
-      "System.ValueTuple/4.5.0": {},
       "System.Xml.ReaderWriter/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -2036,17 +2041,6 @@
           }
         }
       },
-      "Eventos.IO.Application/1.0.0": {
-        "dependencies": {
-          "Eventos.IO.Domain": "1.0.0",
-          "Eventos.IO.Domain.Core": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
-          "AutoMapper": "7.0.1"
-        },
-        "runtime": {
-          "Eventos.IO.Application.dll": {}
-        }
-      },
       "Eventos.IO.Domain/1.0.0": {
         "dependencies": {
           "Eventos.IO.Domain.Core": "1.0.0",
@@ -2059,7 +2053,8 @@
       },
       "Eventos.IO.Domain.Core/1.0.0": {
         "dependencies": {
-          "FluentValidation": "8.1.2"
+          "FluentValidation": "8.1.2",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "6.0.1"
         },
         "runtime": {
           "Eventos.IO.Domain.Core.dll": {}
@@ -2077,14 +2072,6 @@
         },
         "runtime": {
           "Eventos.IO.Infra.CrossCutting.AspNetFilters.dll": {}
-        }
-      },
-      "Eventos.IO.Infra.CrossCutting.Bus/1.0.0": {
-        "dependencies": {
-          "Eventos.IO.Domain.Core": "1.0.0"
-        },
-        "runtime": {
-          "Eventos.IO.Infra.CrossCutting.Bus.dll": {}
         }
       },
       "Eventos.IO.Infra.CrossCutting.Identity/1.0.0": {
@@ -2130,13 +2117,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AutoMapper/7.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1qKMJ1WPs42VkgeQ5iXRDWf46+iUqYM/yColAvAeDQhUgQNsgzSxjMDHQc7dL2x/o0JY8TwG+obR7vbvgh+Y3g==",
-      "path": "automapper/7.0.1",
-      "hashPath": "automapper.7.0.1.nupkg.sha512"
-    },
     "Dapper/1.50.5": {
       "type": "package",
       "serviceable": true,
@@ -2150,6 +2130,20 @@
       "sha512": "sha512-xLK59Y1itHq3ni1M79GtO3GlzLnDWwoud/lC4BUOQaKfHPjsRw5z/dvXuG1Inmt0qKRO8m90kEzjNlxL4mb6Uw==",
       "path": "fluentvalidation/8.1.2",
       "hashPath": "fluentvalidation.8.1.2.nupkg.sha512"
+    },
+    "MediatR/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nQrQ4Ngy5eyS6Oi53e9oreZ8hl6RJOv8ohNExA/QZdnshLySsVUEAAqTDIEOobjPzwQ2itTB5fukdfRV4eGbQQ==",
+      "path": "mediatr/6.0.0",
+      "hashPath": "mediatr.6.0.0.nupkg.sha512"
+    },
+    "MediatR.Extensions.Microsoft.DependencyInjection/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sbgLhEJv6TyO4pd2MVMx+1qEpU0POrFOswRLNmYgULU2Rig0j8pFd0gLLxkjfymnTJrRVQT0D/E7Unyds7+oGw==",
+      "path": "mediatr.extensions.microsoft.dependencyinjection/6.0.1",
+      "hashPath": "mediatr.extensions.microsoft.dependencyinjection.6.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",
@@ -2875,7 +2869,7 @@
     "System.ComponentModel.Annotations/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IjDa643EO77A4CL9dhxfZ6zzGu+pM8Ar0NYPRMN3TvDiga4uGDzFHOj/ArpyNxxKyO5IFT2LZ0rK3kUog7g3jA==",
+      "sha512": "sha512-UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
       "path": "system.componentmodel.annotations/4.5.0",
       "hashPath": "system.componentmodel.annotations.4.5.0.nupkg.sha512"
     },
@@ -3320,13 +3314,6 @@
       "path": "system.threading.tasks.extensions/4.5.1",
       "hashPath": "system.threading.tasks.extensions.4.5.1.nupkg.sha512"
     },
-    "System.ValueTuple/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xZtSZNEHGa+tGsKuP4sh257vxJ/yemShz4EusmomkynMzuEDDjVaErBNewpzEF6swUgbcrSQAX3ELsEp1zCOwA==",
-      "path": "system.valuetuple/4.5.0",
-      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
-    },
     "System.Xml.ReaderWriter/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -3355,11 +3342,6 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Eventos.IO.Application/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Eventos.IO.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -3371,11 +3353,6 @@
       "sha512": ""
     },
     "Eventos.IO.Infra.CrossCutting.AspNetFilters/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Eventos.IO.Infra.CrossCutting.Bus/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

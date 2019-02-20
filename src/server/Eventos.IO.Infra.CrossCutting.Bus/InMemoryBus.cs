@@ -1,35 +1,48 @@
-﻿using Eventos.IO.Domain.Core.Bus;
-using Eventos.IO.Domain.Core.Commands;
+﻿using Eventos.IO.Domain.Core.Commands;
 using Eventos.IO.Domain.Core.Events;
 using Eventos.IO.Domain.Core.Notifications;
-using System;
+using Eventos.IO.Domain.Interfaces;
+using MediatR;
+using System.Threading.Tasks;
 
 namespace Eventos.IO.Infra.CrossCutting.Bus
 {
-    public sealed class InMemoryBus : IBus
+    public sealed class InMemoryBus : IMediatorHandler
     {
-        public static Func<IServiceProvider> ContainerAccessor { get; set; }
-        private static IServiceProvider Container => ContainerAccessor();
+        private readonly IMediator _mediator;
+        private readonly IEventStore _eventStore;
 
-        public void RaiseEvent<T>(T theEvent) where T : Event
+        public InMemoryBus(IMediator mediator, IEventStore eventStore)
         {
-            Publish(theEvent);
+            _mediator = mediator;
+            _eventStore = eventStore;
         }
 
-        public void SendCommand<T>(T theCommand) where T : Command
+        /// <summary>
+        /// Send an Command
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public async Task SendCommand<T>(T command) where T : Command
         {
-            Publish(theCommand);
+            await _mediator.Send(command);
         }
 
-        private static void Publish<T>(T message) where T : Message
+        /// <summary>
+        /// Raise an Event
+        /// </summary>
+        /// <typeparam name="T">Pode ser um Event ou DomainNotification de erros</typeparam>
+        /// <param name="evento"></param>
+        /// <returns></returns>
+        public async Task RaiseEvent<T>(T evento) where T : Event
         {
-            if (Container == null) return;
+            // Aplicação do EventSourcing Pattern 
+            // Se a mensagem não for um DomainNotification, salva o evento no banco de dados
+            if (!evento.MessageType.Equals(nameof(DomainNotification)))
+                _eventStore?.SalvarEvento(evento);
 
-            var obj = Container.GetService(message.MessageType.Equals(nameof(DomainNotification))
-                ? typeof(IDomainNotificationHandler<T>)
-                : typeof(IHandler<T>));
-
-            ((IHandler<T>)obj).Handle(message);
+            await _mediator.Publish(evento);
         }
     }
 }

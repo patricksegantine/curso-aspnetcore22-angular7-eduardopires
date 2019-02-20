@@ -1,97 +1,105 @@
-﻿using Eventos.IO.Domain.CommandHandlers;
-using Eventos.IO.Domain.Core.Bus;
-using Eventos.IO.Domain.Core.Events;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Eventos.IO.Domain.CommandHandlers;
 using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Eventos.Events;
 using Eventos.IO.Domain.Eventos.Repository;
 using Eventos.IO.Domain.Interfaces;
-using System;
+
+using MediatR;
 
 namespace Eventos.IO.Domain.Eventos.Commands
 {
     public class EventoCommandHandler : CommandHandler,
-        IHandler<RegistrarEventoCommand>,
-        IHandler<AtualizarEventoCommand>,
-        IHandler<ExcluirEventoCommand>,
-        IHandler<IncluirEnderecoEventoCommand>,
-        IHandler<AtualizarEnderecoEventoCommand>
+        IRequestHandler<RegistrarEventoCommand, bool>,
+        IRequestHandler<AtualizarEventoCommand, bool>,
+        IRequestHandler<ExcluirEventoCommand, bool>,
+        IRequestHandler<IncluirEnderecoEventoCommand, bool>,
+        IRequestHandler<AtualizarEnderecoEventoCommand, bool>
     {
         private readonly IEventoRepository _eventoRepository;
-        private readonly IBus _bus;
+        private readonly IMediatorHandler _mediator;
         private readonly IUser _user;
 
         public EventoCommandHandler(IEventoRepository eventoRepository,
                                     IUnitOfWork uow,
-                                    IBus bus,
-                                    IDomainNotificationHandler<DomainNotification> notifications,
+                                    INotificationHandler<DomainNotification> notifications,
+                                    IMediatorHandler mediator,
                                     IUser user)
-            : base(uow, bus, notifications)
+            : base(uow, mediator, notifications)
         {
             _eventoRepository = eventoRepository;
-            _bus = bus;
+            _mediator = mediator;
             _user = user;
         }
 
-        public void Handle(RegistrarEventoCommand message)
+        public Task<bool> Handle(RegistrarEventoCommand message, CancellationToken cancellationToken)
         {
             var endereco = new Endereco(message.Endereco.Id, message.Endereco.Logradouro, message.Endereco.Numero, message.Endereco.Complemento, message.Endereco.Bairro, message.Endereco.CEP, message.Endereco.Cidade, message.Endereco.Estado, message.Endereco.EventoId.Value);
 
             var evento = Evento.EventoFactory.NovoEvento(message.Id, message.Nome, message.DescricaoCurta, message.DescricaoLonga,
-                message.DataInicio, message.DataFim, message.Gratuito, message.Valor, 
+                message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
                 message.Online, message.NomeEmpresa, message.OrganizadorId, endereco, message.CategoriaId);
 
-            if (!EventoValido(evento)) return;
+            if (!EventoValido(evento)) return Task.FromResult(false);
 
             _eventoRepository.Incluir(evento);
 
             if (Commit())
             {
-                _bus.RaiseEvent(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
+                _mediator.RaiseEvent(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
             }
+
+            return Task.FromResult(true);
         }
 
-        public void Handle(AtualizarEventoCommand message)
+        public Task<bool> Handle(AtualizarEventoCommand message, CancellationToken cancellationToken)
         {
             var eventoAtual = _eventoRepository.ObterPorId(message.Id);
 
-            if (!EventoExiste(message.Id, message.MessageType)) return;
+            if (!EventoExiste(message.Id, message.MessageType)) return Task.FromResult(false);
 
             if (eventoAtual.OrganizadorId != _user.GetUserId()) // Recupera o usuário logado
             {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
-                return;
+                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
+                return Task.FromResult(false);
             }
 
             var evento = Evento.EventoFactory.NovoEvento(message.Id, message.Nome, message.DescricaoCurta, message.DescricaoLonga,
-                message.DataInicio, message.DataFim, message.Gratuito, message.Valor, 
+                message.DataInicio, message.DataFim, message.Gratuito, message.Valor,
                 message.Online, message.NomeEmpresa, message.OrganizadorId, eventoAtual.Endereco, message.CategoriaId);
 
-            if(!evento.Online && evento.Endereco == null)
+            if (!evento.Online && evento.Endereco == null)
             {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType, "Não é possível atualizar um evento presencial sem informar o endereço!"));
-                return;
+                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Não é possível atualizar um evento presencial sem informar o endereço!"));
+                return Task.FromResult(false);
             }
 
-            if (!EventoValido(evento)) return;
+            if (!EventoValido(evento)) return Task.FromResult(false);
 
             _eventoRepository.Atualizar(evento);
 
             if (Commit())
             {
-                _bus.RaiseEvent(new EventoAtualizadoEvent(evento.Id, evento.Nome));
+                _mediator.RaiseEvent(new EventoAtualizadoEvent(evento.Id, evento.Nome));
             }
+
+            return Task.FromResult(true);
         }
 
-        public void Handle(ExcluirEventoCommand message)
+        public Task<bool> Handle(ExcluirEventoCommand message, CancellationToken cancellationToken)
         {
-            if (!EventoExiste(message.Id, message.MessageType)) return;
+            if (!EventoExiste(message.Id, message.MessageType))
+                return Task.FromResult(false);
 
             var eventoAtual = _eventoRepository.ObterPorId(message.Id);
 
             if (eventoAtual.OrganizadorId != _user.GetUserId())
             {
-                _bus.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
-                return;
+                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
+                return Task.FromResult(false);
             }
 
             // Validações de negócio
@@ -101,38 +109,42 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (Commit())
             {
-                _bus.RaiseEvent(new EventoExcluidoEvent(message.Id));
+                _mediator.RaiseEvent(new EventoExcluidoEvent(message.Id));
             }
+
+            return Task.FromResult(true);
         }
 
-        public void Handle(IncluirEnderecoEventoCommand message)
+        public Task<bool> Handle(IncluirEnderecoEventoCommand message, CancellationToken cancellationToken)
         {
             var endereco = new Endereco(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento,
                 message.Bairro, message.Cidade, message.Estado, message.EventoId.Value);
 
             if (!endereco.IsValid())
             {
-                NotificarValidacoesErro(endereco.ValidationResult);
-                return;
+                NotifyValidationErrors(endereco.ValidationResult);
+                return Task.FromResult(false);
             }
 
             _eventoRepository.IncluirEndereco(endereco);
 
             if (Commit())
             {
-                // TODO: _bus.RaiseEvent(new EnderecoEventoIncluidoEvent());
+                _mediator.RaiseEvent(new EnderecoEventoIncluidoEvent(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento, message.Bairro, message.Cidade, message.Estado, message.EventoId.Value));
             }
+
+            return Task.FromResult(true);
         }
 
-        public void Handle(AtualizarEnderecoEventoCommand message)
+        public Task<bool> Handle(AtualizarEnderecoEventoCommand message, CancellationToken cancellationToken)
         {
             var endereco = new Endereco(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento,
                 message.Bairro, message.Cidade, message.Estado, message.EventoId.Value);
 
             if (!endereco.IsValid())
             {
-                NotificarValidacoesErro(endereco.ValidationResult);
-                return;
+                NotifyValidationErrors(endereco.ValidationResult);
+                return Task.FromResult(false);
             }
 
             _eventoRepository.IncluirEndereco(endereco);
@@ -141,15 +153,16 @@ namespace Eventos.IO.Domain.Eventos.Commands
             {
                 // TODO: _bus.RaiseEvent(new EnderecoEventoAtualizadoEvent());
             }
-        }
 
+            return Task.FromResult(true);
+        }
 
         // Clean Code... singularidade
         private bool EventoValido(Evento evento)
         {
             if (evento.IsValid()) return true;
 
-            NotificarValidacoesErro(evento.ValidationResult);
+            NotifyValidationErrors(evento.ValidationResult);
             return false;
         }
 
@@ -159,10 +172,9 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (evento != null) return true;
 
-            _bus.RaiseEvent(new DomainNotification(messageType, "Evento não encontrado."));
+            _mediator.RaiseEvent(new DomainNotification(messageType, "Evento não encontrado."));
             return false;
         }
-
 
     }
 }

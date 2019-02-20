@@ -61,14 +61,15 @@ namespace Eventos.IO.Services.Api.Configurations
                 validatonParameters.ClockSkew = TimeSpan.Zero;
             });
 
-            // Ativa o uso do token como forma de autorizar o acesso
-            // a recursos deste projeto
+            // Adiciona as políticas de segurança
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("PodeConsultar", policy => policy.RequireClaim("Eventos", "Consultar"));
                 options.AddPolicy("PodeGravar", policy => policy.RequireClaim("Eventos", "Gravar"));
                 options.AddPolicy("PodeExcluir", policy => policy.RequireClaim("Eventos", "Excluir"));
 
+                // Ativa o uso do token como forma de autorizar o acesso
+                // a recursos deste projeto
                 options.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser()

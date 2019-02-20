@@ -1,16 +1,17 @@
-﻿using Eventos.IO.Domain.Core.Events;
+﻿using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Eventos.IO.Domain.Organizadores.Events
 {
-    public class OrganizadorEventHandler :
-        IHandler<OrganizadorRegistradoEvent>
+    public class OrganizadorEventHandler : INotificationHandler<OrganizadorRegistradoEvent>
     {
-        public void Handle(OrganizadorRegistradoEvent message)
+        public Task Handle(OrganizadorRegistradoEvent notification, CancellationToken cancellationToken)
         {
-            // TOD: Enviar um email?
+            // TODO: Enviar um email?
+
+            return Task.CompletedTask;
         }
     }
 }

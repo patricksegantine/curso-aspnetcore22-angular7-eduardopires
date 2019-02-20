@@ -10,6 +10,8 @@ namespace Eventos.IO.Domain.Eventos.Repository
         // ObterEnderecoPorEvento
         // ObterEventoPorCidade
 
+        Evento ObterMeuEventoPorId(Guid id, Guid organizadorId);
+
         IEnumerable<Evento> ObterEventoPorOrganizador(Guid organizadorId);
 
         Endereco ObterEnderecoPorId(Guid id);
