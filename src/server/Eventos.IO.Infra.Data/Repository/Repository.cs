@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Eventos.IO.Domain.Core.Models;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,16 +25,6 @@ namespace Eventos.IO.Infra.Data.Repository
             DbSet.Add(obj);
         }
 
-        public virtual void Atualizar(TEntity obj)
-        {
-            DbSet.Update(obj);
-        }
-
-        public virtual void Excluir(Guid id)
-        {
-            DbSet.Remove(DbSet.Find(id));
-        }
-
         public virtual IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.AsNoTracking().Where(predicate);
@@ -48,6 +38,16 @@ namespace Eventos.IO.Infra.Data.Repository
         public virtual IEnumerable<TEntity> ObterTodos()
         {
             return DbSet.ToList();
+        }
+
+        public virtual void Atualizar(TEntity obj)
+        {
+            DbSet.Update(obj);
+        }
+
+        public virtual void Excluir(Guid id)
+        {
+            DbSet.Remove(DbSet.Find(id));
         }
 
         public int SaveChanges()

@@ -1,5 +1,5 @@
 ﻿using Eventos.IO.Domain.Core.Commands;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Infra.Data.Context;
 using System;
 using System.Collections.Generic;

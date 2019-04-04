@@ -2,11 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Eventos.IO.Domain.CommandHandlers;
+using Eventos.IO.Domain.Core.CommandHandlers;
 using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Eventos.Events;
 using Eventos.IO.Domain.Eventos.Repository;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 
 using MediatR;
 

@@ -2,7 +2,7 @@
 using System.Linq;
 
 using Eventos.IO.Domain.Core.Notifications;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

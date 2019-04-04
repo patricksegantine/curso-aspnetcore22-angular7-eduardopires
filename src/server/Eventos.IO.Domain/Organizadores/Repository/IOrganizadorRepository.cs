@@ -1,4 +1,4 @@
-﻿using Eventos.IO.Domain.Interfaces;
+﻿using Eventos.IO.Domain.Core.Interfaces;
 
 namespace Eventos.IO.Domain.Organizadores
 {

@@ -1,5 +1,5 @@
 ﻿using Eventos.IO.Domain.Core.Notifications;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Domain.Organizadores.Commands;
 using Eventos.IO.Infra.CrossCutting.Identity.Models;
 using Eventos.IO.Infra.CrossCutting.Identity.Models.AccountViewModels;

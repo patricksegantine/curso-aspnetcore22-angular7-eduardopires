@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 
 using Eventos.IO.Api.ViewModels;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Domain.Core.Notifications;
 using Eventos.IO.Domain.Eventos.Commands;
 using Eventos.IO.Domain.Eventos.Repository;
-using Eventos.IO.Domain.Interfaces;
 
 using AutoMapper;
 using MediatR;
@@ -57,7 +57,7 @@ namespace Eventos.IO.Services.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "PodeConsultarEventos")]
+        [Authorize(Policy = "PodeConsultar")]
         [Route("eventos/meus-eventos")]
         public IEnumerable<EventoViewModel> ObterMeusEventos()
         {
@@ -67,7 +67,7 @@ namespace Eventos.IO.Services.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "PodeConsultarEventos")]
+        [Authorize(Policy = "PodeConsultar")]
         [Route("eventos/meus-eventos/{id:guid}")]
         public IActionResult ObterMeuEventoPorId(Guid id)
         {
@@ -88,11 +88,11 @@ namespace Eventos.IO.Services.Api.Controllers
             // ModelState também foi removida. Qualquer inconsistência decorrente 
             // de violação das regras nas Data Annotations da classe Comentario irá 
             // resultar na geração automática de um erro do tipo 400 (Bad Request).
-            //if (!ModelState.IsValid)
-            //{
-            //    NotificarErroModelStateInvalido();
-            //    return Response();
-            //}
+            if (!ModelState.IsValid)
+            {
+                NotificarErroModelStateInvalido();
+                return Response();
+            }
 
             var eventoCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
 

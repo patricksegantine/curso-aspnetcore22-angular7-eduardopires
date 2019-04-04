@@ -2,8 +2,8 @@
 using Eventos.IO.Domain.Eventos.Commands;
 using Eventos.IO.Domain.Eventos.Events;
 using Eventos.IO.Domain.Eventos.Repository;
-using Eventos.IO.Domain.Handlers;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Handlers;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Domain.Organizadores;
 using Eventos.IO.Domain.Organizadores.Commands;
 using Eventos.IO.Domain.Organizadores.Events;

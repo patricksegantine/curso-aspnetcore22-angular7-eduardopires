@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using Eventos.IO.Domain.Interfaces;
+using Eventos.IO.Domain.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 
 namespace Eventos.IO.Infra.CrossCutting.Identity.Models

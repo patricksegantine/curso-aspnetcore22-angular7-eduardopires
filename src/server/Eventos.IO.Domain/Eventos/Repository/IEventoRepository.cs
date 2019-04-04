@@ -1,4 +1,4 @@
-﻿using Eventos.IO.Domain.Interfaces;
+﻿using Eventos.IO.Domain.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 
