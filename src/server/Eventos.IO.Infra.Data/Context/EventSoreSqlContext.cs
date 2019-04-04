@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Eventos.IO.Infra.Data.Context
 {
-    public class EventSoreSqlContext : DbContext
+    public class EventStoreSqlContext : DbContext
     {
         public DbSet<StoredEvent> StoredEvents { get; set; }
 

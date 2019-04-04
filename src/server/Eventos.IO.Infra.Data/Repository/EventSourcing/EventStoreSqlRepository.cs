@@ -9,9 +9,9 @@ namespace Eventos.IO.Infra.Data.Repository.EventSourcing
 {
     public class EventStoreSqlRepository : IEventStoreRepository
     {
-        private readonly EventSoreSqlContext _context;
+        private readonly EventStoreSqlContext _context;
 
-        public EventStoreSqlRepository(EventSoreSqlContext context)
+        public EventStoreSqlRepository(EventStoreSqlContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace Eventos.IO.Infra.Data.Repository.EventSourcing
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

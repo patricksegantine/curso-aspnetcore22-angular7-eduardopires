@@ -4,7 +4,6 @@ using Eventos.IO.Domain.Core.Commands;
 using Eventos.IO.Domain.Core.Events;
 using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Domain.Core.Notifications;
-using Eventos.IO.Domain.Core.Interfaces;
 
 using MediatR;
 
