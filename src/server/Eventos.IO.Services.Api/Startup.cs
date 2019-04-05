@@ -38,8 +38,7 @@ namespace Eventos.IO.Services.Api
             // Configurando o uso da classe de contexto para
             // acesso às tabelas do ASP.NET Identity Core
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // Configurações de Autenticação, Autorização e JWT
             services.AddMvcSecurity(Configuration);

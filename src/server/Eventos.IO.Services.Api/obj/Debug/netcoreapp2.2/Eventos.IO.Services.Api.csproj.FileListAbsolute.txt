@@ -31,6 +31,8 @@ C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\E
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.dll
 C:\CursoNetCore\Eventos.IO\src\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.pdb
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\appsettings.json
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\appsettings.Development.json
+F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\appsettings.Testing.json
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Eventos.IO.Services.Api.deps.json
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Eventos.IO.Services.Api.runtimeconfig.json
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Eventos.IO.Services.Api.runtimeconfig.dev.json
