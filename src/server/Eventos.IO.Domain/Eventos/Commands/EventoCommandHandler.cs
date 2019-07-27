@@ -120,7 +120,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
             var endereco = new Endereco(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento,
                 message.Bairro, message.Cidade, message.Estado, message.EventoId.Value);
 
-            if (!endereco.IsValid())
+            if (!endereco.EhValido())
             {
                 NotifyValidationErrors(endereco.ValidationResult);
                 return Task.FromResult(false);
@@ -141,7 +141,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
             var endereco = new Endereco(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento,
                 message.Bairro, message.Cidade, message.Estado, message.EventoId.Value);
 
-            if (!endereco.IsValid())
+            if (!endereco.EhValido())
             {
                 NotifyValidationErrors(endereco.ValidationResult);
                 return Task.FromResult(false);
@@ -160,7 +160,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
         // Clean Code... singularidade
         private bool EventoValido(Evento evento)
         {
-            if (evento.IsValid()) return true;
+            if (evento.EhValido()) return true;
 
             NotifyValidationErrors(evento.ValidationResult);
             return false;

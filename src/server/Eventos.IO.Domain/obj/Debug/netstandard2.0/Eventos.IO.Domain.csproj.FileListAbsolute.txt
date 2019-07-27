@@ -34,3 +34,15 @@ F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\ne
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.deps.json
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.dll
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.dll
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csprojAssemblyReference.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfoInputs.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfo.cs
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb

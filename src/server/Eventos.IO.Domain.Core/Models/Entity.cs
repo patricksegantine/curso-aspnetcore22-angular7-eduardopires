@@ -13,7 +13,7 @@ namespace Eventos.IO.Domain.Core.Models
 
         public Guid Id { get; protected set; }
 
-        public abstract bool IsValid();
+        public abstract bool EhValido();
 
         public ValidationResult ValidationResult { get; protected set; }
 

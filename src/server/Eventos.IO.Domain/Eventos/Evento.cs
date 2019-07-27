@@ -69,14 +69,14 @@ namespace Eventos.IO.Domain.Eventos
         // AddHoc Setters
         public void AtribuirEndereco(Endereco endereco)
         {
-            if (!endereco.IsValid()) return;
+            if (!endereco.EhValido()) return;
 
             Endereco = endereco;
         }
 
         public void AtribuirCategoria(Categoria categoria)
         {
-            if (!categoria.IsValid()) return;
+            if (!categoria.EhValido()) return;
             Categoria = categoria;
         }
 
@@ -120,7 +120,7 @@ namespace Eventos.IO.Domain.Eventos
         
         #region Validation
 
-        public override bool IsValid()
+        public override bool EhValido()
         {
             ValidationRules();
 
@@ -182,7 +182,7 @@ namespace Eventos.IO.Domain.Eventos
         private void ValidarEndereco()
         {
             if (Online) return;
-            if (Endereco.IsValid()) return;
+            if (Endereco.EhValido()) return;
 
             foreach (var error in Endereco.ValidationResult.Errors)
             {

@@ -43,7 +43,7 @@ namespace Eventos.IO.Domain.Eventos
 
         #region Validation
 
-        public override bool IsValid()
+        public override bool EhValido()
         {
             ValidationRules();
 

@@ -8,7 +8,6 @@ using Eventos.IO.Services.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
-using Eventos.IO.Domain.Core.Interfaces;
 using Xunit;
 
 namespace Eventos.IO.Tests.Api.UnitTests

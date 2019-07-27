@@ -16,3 +16,12 @@ F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfo.cs
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
 F:\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.deps.json
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.csprojAssemblyReference.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.csproj.CoreCompileInputs.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfoInputs.cache
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.AssemblyInfo.cs
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.dll
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.AspNetFilters\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.AspNetFilters.pdb

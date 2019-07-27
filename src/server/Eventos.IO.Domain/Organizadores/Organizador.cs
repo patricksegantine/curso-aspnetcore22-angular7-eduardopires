@@ -26,7 +26,7 @@ namespace Eventos.IO.Domain.Organizadores
         // EF Propriedade de Navegação
         public virtual ICollection<Evento> Eventos { get; private set; }
 
-        public override bool IsValid()
+        public override bool EhValido()
         {
             return true;
         }

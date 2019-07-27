@@ -31,7 +31,7 @@ namespace Eventos.IO.Domain.Organizadores.Commands
         {
             var organizador = new Organizador(message.Id, message.Nome, message.CpfCnpj, message.Email);
 
-            if (!organizador.IsValid())
+            if (!organizador.EhValido())
             {
                 NotifyValidationErrors(organizador.ValidationResult);
                 return Task.FromResult(false);

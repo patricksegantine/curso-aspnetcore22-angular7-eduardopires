@@ -18,7 +18,7 @@ namespace Eventos.IO.Domain.Eventos
         // EF Propriedade de Navegação
         public virtual ICollection<Evento> Eventos { get; set; }
 
-        public override bool IsValid()
+        public override bool EhValido()
         {
             return true;
         }
