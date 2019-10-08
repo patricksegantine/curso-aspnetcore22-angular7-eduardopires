@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav" [collapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/eventos']" routerLinkActive="active">Eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/organizador']" routerLinkActive="active" >Organizador</a>
+        </li>
+    </ul>
+
+    <app-menu-login></app-menu-login>
+  </div>
+</nav>

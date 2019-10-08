@@ -81,7 +81,6 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.A
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Eventos.IO.Infra.CrossCutting.Identity.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Eventos.IO.Infra.Data.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csprojAssemblyReference.cache
-C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csproj.CoreCompileInputs.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.RazorAssemblyInfo.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.RazorAssemblyInfo.cs
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.AssemblyInfoInputs.cache
@@ -90,3 +89,4 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.A
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.csproj.CopyComplete
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.dll
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\obj\Debug\netcoreapp2.2\Eventos.IO.Services.Api.pdb
+C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Services.Api\bin\Debug\netcoreapp2.2\Properties\launchSettings.json

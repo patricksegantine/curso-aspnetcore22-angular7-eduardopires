@@ -16,16 +16,15 @@ namespace Eventos.IO.Services.Api.Controllers
 {
     public class EventosController : BaseController
     {
-        private readonly IMediatorHandler _mediator;
         private readonly IEventoRepository _eventoRepository;
         private readonly IMapper _mapper;
+        private readonly IMediatorHandler _mediator;
 
-        public EventosController(
-            INotificationHandler<DomainNotification> notifications,
-            IMediatorHandler mediator,
-            IEventoRepository eventoRepository,
-            IMapper mapper,
-            IUser user) : base(notifications, mediator, user)
+        public EventosController(INotificationHandler<DomainNotification> notifications,
+                                 IMediatorHandler mediator,
+                                 IEventoRepository eventoRepository,
+                                 IMapper mapper,
+                                 IUser user) : base(notifications, mediator, user)
         {
             _mediator = mediator;
             _eventoRepository = eventoRepository;
@@ -96,7 +95,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
             var eventoCommand = _mapper.Map<RegistrarEventoCommand>(eventoViewModel);
 
-            _mediator.SendCommand(eventoCommand);
+            _mediator.EnviarComando(eventoCommand);
             return Response(eventoCommand);
         }
 
@@ -107,7 +106,7 @@ namespace Eventos.IO.Services.Api.Controllers
         {
             var eventoCommand = _mapper.Map<AtualizarEventoCommand>(eventoViewModel);
 
-            _mediator.SendCommand(eventoCommand);
+            _mediator.EnviarComando(eventoCommand);
             return Response(eventoCommand);
         }
 
@@ -118,7 +117,7 @@ namespace Eventos.IO.Services.Api.Controllers
         {
             var eventoCommand = new ExcluirEventoCommand(id);
 
-            _mediator.SendCommand(new ExcluirEventoCommand(id));
+            _mediator.EnviarComando(new ExcluirEventoCommand(id));
             return Response();
         }
 
@@ -129,7 +128,7 @@ namespace Eventos.IO.Services.Api.Controllers
         {
             var eventoCommand = _mapper.Map<IncluirEnderecoEventoCommand>(enderecoViewModel);
 
-            _mediator.SendCommand(eventoCommand);
+            _mediator.EnviarComando(eventoCommand);
             return Response(eventoCommand);
         }
 
@@ -140,7 +139,7 @@ namespace Eventos.IO.Services.Api.Controllers
         {
             var eventoCommand = _mapper.Map<AtualizarEnderecoEventoCommand>(enderecoViewModel);
 
-            _mediator.SendCommand(eventoCommand);
+            _mediator.EnviarComando(eventoCommand);
             return Response(eventoCommand);
         }
     }

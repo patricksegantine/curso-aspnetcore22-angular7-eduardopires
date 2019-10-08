@@ -24,7 +24,7 @@ namespace Eventos.IO.Domain.Core.CommandHandlers
         {
             foreach (var error in validationResult.Errors)
             {
-                _mediator.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
+                _mediator.PublicarEvento(new DomainNotification(error.PropertyName, error.ErrorMessage));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Eventos.IO.Domain.Core.CommandHandlers
             var commandResponse = _uow.Commit();
             if (commandResponse.Success) return true;
 
-            _mediator.RaiseEvent(new DomainNotification("Commit", "Ocorreu um erro ao salvar os dados no banco"));
+            _mediator.PublicarEvento(new DomainNotification("Commit", "Ocorreu um erro ao salvar os dados no banco"));
 
             return false;
         }

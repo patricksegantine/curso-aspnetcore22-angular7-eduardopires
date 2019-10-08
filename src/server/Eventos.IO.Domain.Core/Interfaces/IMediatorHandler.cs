@@ -6,7 +6,7 @@ namespace Eventos.IO.Domain.Core.Interfaces
 {
     public interface IMediatorHandler
     {
-        Task SendCommand<T>(T command) where T : Command;
-        Task RaiseEvent<T>(T @event) where T : Event;
+        Task EnviarComando<T>(T command) where T : Command;
+        Task PublicarEvento<T>(T @event) where T : Event;
     }
 }

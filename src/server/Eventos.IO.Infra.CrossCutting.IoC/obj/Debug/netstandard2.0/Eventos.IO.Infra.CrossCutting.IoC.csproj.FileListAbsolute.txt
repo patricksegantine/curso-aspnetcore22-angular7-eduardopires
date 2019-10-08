@@ -80,7 +80,6 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Cros
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\bin\Debug\netstandard2.0\Eventos.IO.Infra.Data.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.csprojAssemblyReference.cache
-C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.csproj.CoreCompileInputs.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.AssemblyInfoInputs.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.AssemblyInfo.cs
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.csproj.CopyComplete

@@ -69,7 +69,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
                 // Executando o papel da Camada de Application
                 var registroCommand = new RegistrarOrganizadorCommand(Guid.Parse(user.Id), model.Nome, model.CpfCnpj, model.Email);
-                _mediator.SendCommand(registroCommand);
+                await _mediator.EnviarComando(registroCommand);
 
                 if (!OperacaoValida())
                 {
@@ -117,11 +117,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         #region Helpers
 
-        /// <summary>
-        /// Gera o token do usuário
-        /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
+        // Gera o token do usuário
         private async Task<Token> GerarTokenUsuario(LoginViewModel login)
         {
             // Recupera os dados do usuário gravados no banco de dados
@@ -168,15 +164,12 @@ namespace Eventos.IO.Services.Api.Controllers
             };
         }
 
-        /// <summary>
-        /// Adiciona os erros capturadores no login ao objeto ao objeto de notificação
-        /// </summary>
-        /// <param name="result"></param>
+        // Adiciona os erros capturadores no login ao objeto ao objeto de notificação
         private void AdicionarErrosIdentity(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
-                _mediator.RaiseEvent(new DomainNotification(result.ToString(), error.Description));
+                _mediator.PublicarEvento(new DomainNotification(result.ToString(), error.Description));
             }
         }
 

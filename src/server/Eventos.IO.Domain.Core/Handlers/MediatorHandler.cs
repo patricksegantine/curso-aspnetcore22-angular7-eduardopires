@@ -29,7 +29,7 @@ namespace Eventos.IO.Domain.Core.Handlers
         /// <typeparam name="T"></typeparam>
         /// <param name="command"></param>
         /// <returns></returns>
-        public async Task SendCommand<T>(T command) where T : Command
+        public async Task EnviarComando<T>(T command) where T : Command
         {
             await _mediator.Send(command);
         }
@@ -40,7 +40,7 @@ namespace Eventos.IO.Domain.Core.Handlers
         /// <typeparam name="T">Pode ser um Event ou DomainNotification de erros</typeparam>
         /// <param name="evento"></param>
         /// <returns></returns>
-        public async Task RaiseEvent<T>(T evento) where T : Event
+        public async Task PublicarEvento<T>(T evento) where T : Event
         {
             // Aplicação do EventSourcing Pattern 
             // Se a mensagem não for um DomainNotification, salva o evento no banco de dados

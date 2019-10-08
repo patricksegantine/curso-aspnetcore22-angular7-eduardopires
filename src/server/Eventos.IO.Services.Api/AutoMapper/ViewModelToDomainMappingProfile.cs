@@ -3,7 +3,7 @@ using Eventos.IO.Api.ViewModels;
 using Eventos.IO.Domain.Eventos.Commands;
 using Eventos.IO.Domain.Organizadores.Commands;
 
-namespace Eventos.IO.Application.AutoMapper
+namespace Eventos.IO.Services.Api.AutoMapper
 {
     public class ViewModelToDomainMappingProfile : Profile
     {
@@ -12,7 +12,7 @@ namespace Eventos.IO.Application.AutoMapper
             #region Evento
 
             CreateMap<EventoViewModel, RegistrarEventoCommand>()
-                .ConstructUsing(vm=>new RegistrarEventoCommand(vm.Nome, vm.DescricaoCurta, vm.DescricaoLonga, vm.DataInicio, vm.DataFim, vm.Gratuito, vm.Valor, vm.Online, vm.NomeEmpresa, vm.OrganizadorId, vm.CategoriaId,
+                .ConstructUsing(vm => new RegistrarEventoCommand(vm.Nome, vm.DescricaoCurta, vm.DescricaoLonga, vm.DataInicio, vm.DataFim, vm.Gratuito, vm.Valor, vm.Online, vm.NomeEmpresa, vm.OrganizadorId, vm.CategoriaId,
                     new IncluirEnderecoEventoCommand(vm.Endereco.Id, vm.Endereco.Logradouro, vm.Endereco.Numero, vm.Endereco.Complemento, vm.Endereco.Bairro, vm.Endereco.CEP, vm.Endereco.Cidade, vm.Endereco.Estado, vm.Id)));
 
             CreateMap<EventoViewModel, AtualizarEventoCommand>()
@@ -28,8 +28,8 @@ namespace Eventos.IO.Application.AutoMapper
 
             CreateMap<EnderecoViewModel, AtualizarEnderecoEventoCommand>()
                 .ConstructUsing(vm => new AtualizarEnderecoEventoCommand(vm.Id, vm.CEP, vm.Logradouro, vm.Numero, vm.Complemento, vm.Bairro, vm.Cidade, vm.Estado, vm.EventoId));
-            
-            #endregion 
+
+            #endregion
 
             #endregion
 

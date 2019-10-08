@@ -49,7 +49,6 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csprojAssemblyReference.cache
-C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csproj.CoreCompileInputs.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.AssemblyInfoInputs.cache
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.AssemblyInfo.cs
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Data\obj\Debug\netstandard2.0\Eventos.IO.Infra.Data.csproj.CopyComplete

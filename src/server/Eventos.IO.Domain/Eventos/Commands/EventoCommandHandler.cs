@@ -49,7 +49,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (Commit())
             {
-                _mediator.RaiseEvent(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
+                _mediator.PublicarEvento(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
             }
 
             return Task.FromResult(true);
@@ -63,7 +63,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (eventoAtual.OrganizadorId != _user.GetUserId()) // Recupera o usuário logado
             {
-                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
+                _mediator.PublicarEvento(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
                 return Task.FromResult(false);
             }
 
@@ -73,7 +73,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (!evento.Online && evento.Endereco == null)
             {
-                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Não é possível atualizar um evento presencial sem informar o endereço!"));
+                _mediator.PublicarEvento(new DomainNotification(message.MessageType, "Não é possível atualizar um evento presencial sem informar o endereço!"));
                 return Task.FromResult(false);
             }
 
@@ -83,7 +83,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (Commit())
             {
-                _mediator.RaiseEvent(new EventoAtualizadoEvent(evento.Id, evento.Nome));
+                _mediator.PublicarEvento(new EventoAtualizadoEvent(evento.Id, evento.Nome));
             }
 
             return Task.FromResult(true);
@@ -98,7 +98,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (eventoAtual.OrganizadorId != _user.GetUserId())
             {
-                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
+                _mediator.PublicarEvento(new DomainNotification(message.MessageType, "Evento não pertence ao Organizador!"));
                 return Task.FromResult(false);
             }
 
@@ -109,7 +109,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (Commit())
             {
-                _mediator.RaiseEvent(new EventoExcluidoEvent(message.Id));
+                _mediator.PublicarEvento(new EventoExcluidoEvent(message.Id));
             }
 
             return Task.FromResult(true);
@@ -130,7 +130,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (Commit())
             {
-                _mediator.RaiseEvent(new EnderecoEventoIncluidoEvent(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento, message.Bairro, message.Cidade, message.Estado, message.EventoId.Value));
+                _mediator.PublicarEvento(new EnderecoEventoIncluidoEvent(message.Id, message.CEP, message.Logradouro, message.Numero, message.Complemento, message.Bairro, message.Cidade, message.Estado, message.EventoId.Value));
             }
 
             return Task.FromResult(true);
@@ -172,7 +172,7 @@ namespace Eventos.IO.Domain.Eventos.Commands
 
             if (evento != null) return true;
 
-            _mediator.RaiseEvent(new DomainNotification(messageType, "Evento não encontrado."));
+            _mediator.PublicarEvento(new DomainNotification(messageType, "Evento não encontrado."));
             return false;
         }
 

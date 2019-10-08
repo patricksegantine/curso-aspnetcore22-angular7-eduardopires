@@ -57,11 +57,19 @@ namespace Eventos.IO.Services.Api
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+
+            // Customizando o comportamento do ApiControllerAttribute
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+                options.SuppressConsumesConstraintForFormFileParameters = true;
+            });
+
             // Versionamento do WebApi
             services.AddApiVersioning("api/v{version}");
 
             // Aciona o automapper
-            services.AddAutoMapper();
+            services.AddAutoMapperSetup();
 
             // Ativa o serviço de documentação do Swagger
             services.AddSwaggerConfig();

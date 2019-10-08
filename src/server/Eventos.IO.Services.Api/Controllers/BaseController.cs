@@ -84,7 +84,7 @@ namespace Eventos.IO.Services.Api.Controllers
         /// <param name="mensagem"></param>
         protected void NotificarErro(string codigo, string mensagem)
         {
-            _mediator.RaiseEvent(new DomainNotification(codigo, mensagem));
+            _mediator.PublicarEvento(new DomainNotification(codigo, mensagem));
         }
     }
 }

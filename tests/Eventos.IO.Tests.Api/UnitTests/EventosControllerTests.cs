@@ -60,7 +60,7 @@ namespace Eventos.IO.Tests.Api.UnitTests
             var result = eventosController.Post(eventoViewModel);
 
             // Assert
-            mockMediator.Verify(m => m.SendCommand(eventoCommand), Times.Once);
+            mockMediator.Verify(m => m.EnviarComando(eventoCommand), Times.Once);
             Assert.IsType<OkObjectResult>(result);
         }
 
@@ -80,7 +80,7 @@ namespace Eventos.IO.Tests.Api.UnitTests
             var result = eventosController.Post(new EventoViewModel());
 
             // Assert
-            mockMediator.Verify(m=>m.SendCommand(It.IsAny<RegistrarEventoCommand>()), Times.Never);
+            mockMediator.Verify(m=>m.EnviarComando(It.IsAny<RegistrarEventoCommand>()), Times.Never);
             Assert.IsType<BadRequestObjectResult>(result);
         }
 
@@ -109,7 +109,7 @@ namespace Eventos.IO.Tests.Api.UnitTests
             var result = eventosController.Post(eventoViewModel);
 
             // Assert
-            mockMediator.Verify(m=>m.SendCommand(eventoCommand), Times.Once);
+            mockMediator.Verify(m=>m.EnviarComando(eventoCommand), Times.Once);
             Assert.IsType<BadRequestObjectResult>(result);
         }
     }

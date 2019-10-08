@@ -41,7 +41,7 @@ namespace Eventos.IO.Domain.Organizadores.Commands
             var organizadorExistente = _organizadorRepository.Buscar(o => o.CpfCnpj == organizador.CpfCnpj || o.Email == organizador.Email);
             if (organizadorExistente.Any())
             {
-                _mediator.RaiseEvent(new DomainNotification(message.MessageType, "CPF/CNPJ ou e-mail já utilizados"));
+                _mediator.PublicarEvento(new DomainNotification(message.MessageType, "CPF/CNPJ ou e-mail já utilizados"));
                 return Task.FromResult(false);
             }
 
@@ -50,7 +50,7 @@ namespace Eventos.IO.Domain.Organizadores.Commands
 
             if (Commit())
             {
-                _mediator.RaiseEvent(new OrganizadorRegistradoEvent(organizador.Id, organizador.Nome, organizador.CpfCnpj, organizador.Email));
+                _mediator.PublicarEvento(new OrganizadorRegistradoEvent(organizador.Id, organizador.Nome, organizador.CpfCnpj, organizador.Email));
             }
 
             return Task.FromResult(true);
