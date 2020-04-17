@@ -7,7 +7,7 @@ using Eventos.IO.Domain.Core.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Eventos.IO.Services.Api.Controllers
+namespace Eventos.IO.Services.Api.Controllers.Common
 {
     [ApiController]
     [Produces("application/json")]
@@ -61,7 +61,7 @@ namespace Eventos.IO.Services.Api.Controllers
         /// <returns></returns>
         protected bool OperacaoValida()
         {
-            return (!_notifications.HasNotifications());
+            return !_notifications.HasNotifications();
         }
 
         /// <summary>

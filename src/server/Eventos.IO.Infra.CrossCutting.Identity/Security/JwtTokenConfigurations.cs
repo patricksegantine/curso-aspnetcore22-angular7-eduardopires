@@ -1,8 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Threading.Tasks;
-
-namespace Eventos.IO.Infra.CrossCutting.Identity.Security
+﻿namespace Eventos.IO.Infra.CrossCutting.Identity.Security
 {
     // aula19 - 2h06min JwtTokenOptions
     public class JwtTokenConfigurations

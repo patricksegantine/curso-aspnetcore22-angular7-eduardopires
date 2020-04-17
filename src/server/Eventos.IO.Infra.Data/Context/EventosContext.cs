@@ -9,6 +9,8 @@ namespace Eventos.IO.Infra.Data.Context
 {
     public class EventosContext : DbContext
     {
+        public EventosContext(DbContextOptions<EventosContext> options) : base(options) { }
+
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Organizador> Organizadores { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
@@ -24,13 +26,5 @@ namespace Eventos.IO.Infra.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-        }
     }
 }

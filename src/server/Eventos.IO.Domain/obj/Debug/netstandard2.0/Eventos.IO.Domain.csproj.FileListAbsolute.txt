@@ -45,3 +45,15 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.deps.json
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csprojAssemblyReference.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfoInputs.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.AssemblyInfo.cs
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.csproj.CopyComplete
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Domain\obj\Debug\netstandard2.0\Eventos.IO.Domain.pdb

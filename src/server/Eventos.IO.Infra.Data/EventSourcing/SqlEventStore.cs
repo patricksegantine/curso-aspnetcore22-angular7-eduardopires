@@ -1,7 +1,7 @@
 ﻿using Eventos.IO.Domain.Core.Events;
 using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Infra.Data.Repository.EventSourcing;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Eventos.IO.Infra.Data.EventSourcing
 {
@@ -18,7 +18,7 @@ namespace Eventos.IO.Infra.Data.EventSourcing
 
         public void SalvarEvento<T>(T evento) where T : Event
         {
-            var serializedData = JsonConvert.SerializeObject(evento);
+            var serializedData = JsonSerializer.Serialize(evento);
             var storedEvent = new StoredEvent(
                 evento,
                 serializedData,

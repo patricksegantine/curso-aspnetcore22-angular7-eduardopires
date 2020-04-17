@@ -8,6 +8,8 @@ namespace Eventos.IO.Infra.Data.Context
 {
     public class EventStoreSqlContext : DbContext
     {
+        public EventStoreSqlContext(DbContextOptions<EventStoreSqlContext> options) : base(options) { }
+
         public DbSet<StoredEvent> StoredEvents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -15,16 +17,6 @@ namespace Eventos.IO.Infra.Data.Context
             builder.ApplyConfiguration(new StoredEventMap());
 
             base.OnModelCreating(builder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
     }
 }

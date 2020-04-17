@@ -11,5 +11,6 @@ namespace Eventos.IO.Infra.CrossCutting.Identity.Security
         public string Expiration { get; set; }
         public string AccessToken { get; set; }
         public string Message { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

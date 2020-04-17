@@ -11,6 +11,8 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Eventos.IO.Services.Api.Controllers.Common;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Eventos.IO.Services.Api.Controllers
 {
@@ -24,7 +26,9 @@ namespace Eventos.IO.Services.Api.Controllers
                                  IMediatorHandler mediator,
                                  IEventoRepository eventoRepository,
                                  IMapper mapper,
-                                 IUser user) : base(notifications, mediator, user)
+                                 IUser user, 
+                                 IMemoryCache cache
+                                 ) : base(notifications, mediator, user)
         {
             _mediator = mediator;
             _eventoRepository = eventoRepository;
@@ -36,6 +40,13 @@ namespace Eventos.IO.Services.Api.Controllers
         [Route("eventos")]
         public IEnumerable<EventoViewModel> Get()
         {
+            var cacheEntryOptions = new MemoryCacheEntryOptions()
+            {
+
+            }
+                .SetSlidingExpiration(TimeSpan.FromSeconds(3));
+
+
             return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterTodos());
         }
 

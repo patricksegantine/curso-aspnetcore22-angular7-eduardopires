@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using Eventos.IO.Services.Api.Controllers.Common;
 
 namespace Eventos.IO.Services.Api.Controllers
 {

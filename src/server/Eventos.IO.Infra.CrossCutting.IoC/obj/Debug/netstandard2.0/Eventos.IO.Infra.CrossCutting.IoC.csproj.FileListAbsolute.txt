@@ -85,3 +85,5 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Cros
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.csproj.CopyComplete
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.dll
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.IoC\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.IoC.pdb

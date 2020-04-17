@@ -57,3 +57,15 @@ C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.Cros
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.csproj.CopyComplete
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.dll
 C:\Projetos\GitHub\CursoAspNetCore22-Angular7-R\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.csprojAssemblyReference.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.csproj.CoreCompileInputs.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.AssemblyInfoInputs.cache
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.AssemblyInfo.cs
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\appsettings.json
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.deps.json
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Domain.dll
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Domain.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\bin\Debug\netstandard2.0\Eventos.IO.Domain.Core.pdb
+C:\Projetos\Cursos\curso-aspnetcore22-angular7-eduardopires\src\server\Eventos.IO.Infra.CrossCutting.Identity\obj\Debug\netstandard2.0\Eventos.IO.Infra.CrossCutting.Identity.csproj.CopyComplete

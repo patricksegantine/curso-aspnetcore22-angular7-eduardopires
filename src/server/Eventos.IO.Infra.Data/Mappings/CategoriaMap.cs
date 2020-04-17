@@ -1,7 +1,6 @@
 ﻿using Eventos.IO.Domain.Eventos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace Eventos.IO.Infra.Data.Context.Mappings
 {

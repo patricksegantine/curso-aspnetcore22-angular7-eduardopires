@@ -1,19 +1,14 @@
 ﻿using Eventos.IO.Infra.CrossCutting.AspNetFilters;
-using Eventos.IO.Infra.CrossCutting.Identity.Data;
 using Eventos.IO.Services.Api.Configurations;
-using Eventos.IO.Services.Api.Middleares;
-
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-using AutoMapper;
-using MediatR;
+using Microsoft.Extensions.Hosting;
 
 namespace Eventos.IO.Services.Api
 {
@@ -28,34 +23,32 @@ namespace Eventos.IO.Services.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Logger
-            services.AddLogging(options =>
-            {
-                options.AddConsole();
-                options.AddDebug();
-            });
-
-            // Configurando o uso da classe de contexto para
-            // acesso às tabelas do ASP.NET Identity Core
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDatabaseConfig(Configuration);
 
             // Configurações de Autenticação, Autorização e JWT
-            services.AddMvcSecurity(Configuration);
+            services.AddSecurityConfig(Configuration);
 
-            // Options para configurações customizadas
-            services.AddOptions();
+            // Caching InMemory e Redis
+            services.AddCachingConfig(Configuration);
 
-            // MVC com restrição de XML e adição de filtro de ações
-            services.AddMvc(options =>
+            services.AddResponseCompression(options =>
             {
-                options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
+                options.Providers.Add<BrotliCompressionProvider>();
+                options.EnableForHttps = true;
+            });
+
+            // filtro de ações
+            services.AddControllers(options =>
+            {
                 options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalActionLoggerFilter)));
             }).AddJsonOptions(options =>
             {
-                // remove valores nulos do retorno da API
-                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                // remove valores nulos e somente leitura do retorno da API
+                var serializerOptions = options.JsonSerializerOptions;
+                serializerOptions.IgnoreNullValues = true;
+                serializerOptions.IgnoreReadOnlyProperties = true;
+                serializerOptions.WriteIndented = true;
+            });
 
 
             // Customizando o comportamento do ApiControllerAttribute
@@ -65,36 +58,37 @@ namespace Eventos.IO.Services.Api
                 options.SuppressConsumesConstraintForFormFileParameters = true;
             });
 
+            // Mapeamentos DE/PARA
+            services.AddAutoMapperConfig();
+
+            // MediatR for Domain Events and Notifications
+            services.AddMediatR(typeof(Startup));
+            
             // Versionamento do WebApi
             services.AddApiVersioning("api/v{version}");
-
-            // Aciona o automapper
-            services.AddAutoMapperSetup();
-
-            // Ativa o serviço de documentação do Swagger
+            
+            // Swagger
             services.AddSwaggerConfig();
 
-            services.AddHttpContextAccessor();
-
-            services.AddMediatR();
+            // // ASP.NET HttpContext 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Registrar todos os DI
-            services.AddDIConfig();
+            services.AddDependencyInjectionConfig();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            #region Configurações MVC
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
+            app.UseRouting();
 
             app.UseCors(c =>
             {
@@ -103,28 +97,17 @@ namespace Eventos.IO.Services.Api
                 c.AllowAnyOrigin();
             });
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseAuthorization();
 
-            #endregion
+            // Ativa a compressão
+            app.UseResponseCompression();
 
-            #region Swagger
-
-            if (env.IsProduction())
-            {
-                // bloqueia o acesso a usuários não logados
-                app.UseSwaggerAuthorized();
-            }
-
-            app.UseSwagger();
-            app.UseSwaggerUI(s =>
-            {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Eventos.IO API v1.0");
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
             });
 
-            #endregion
+            app.UseSwaggerConfig();
         }
     }
 }

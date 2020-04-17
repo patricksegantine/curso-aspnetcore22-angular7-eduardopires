@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 
 namespace Eventos.IO.Services.Api.Configurations
 {
     public static class SecurityConfiguration
     {
-        public static void AddMvcSecurity(this IServiceCollection services, IConfiguration Configuration)
+        public static void AddSecurityConfig(this IServiceCollection services, IConfiguration Configuration)
         {
-            if (services == null)
-                throw new ArgumentException(nameof(services));
+            if (services == null) throw new ArgumentException(nameof(services));
 
             // Ativando a utilização do ASP.NET Identity, a fim de
             // permitir a recuperação de seus objetos via injeção de dependências
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
 
 
             var signinConfigurations = new SigningCredentialsConfigurations();
