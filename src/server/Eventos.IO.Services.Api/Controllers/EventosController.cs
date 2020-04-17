@@ -21,6 +21,7 @@ namespace Eventos.IO.Services.Api.Controllers
         private readonly IEventoRepository _eventoRepository;
         private readonly IMapper _mapper;
         private readonly IMediatorHandler _mediator;
+        private readonly IMemoryCache _cache;
 
         public EventosController(INotificationHandler<DomainNotification> notifications,
                                  IMediatorHandler mediator,
@@ -33,6 +34,7 @@ namespace Eventos.IO.Services.Api.Controllers
             _mediator = mediator;
             _eventoRepository = eventoRepository;
             _mapper = mapper;
+            _cache = cache;
         }
 
         [HttpGet]
@@ -40,14 +42,19 @@ namespace Eventos.IO.Services.Api.Controllers
         [Route("eventos")]
         public IEnumerable<EventoViewModel> Get()
         {
-            var cacheEntryOptions = new MemoryCacheEntryOptions()
+            const string cacheKey = "eventos";
+
+            if (!_cache.TryGetValue(cacheKey, out IEnumerable<Domain.Eventos.Evento> dados))
             {
+                dados = _eventoRepository.ObterTodos();
+            
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromSeconds(3));
 
+                _cache.Set(cacheKey, dados);
             }
-                .SetSlidingExpiration(TimeSpan.FromSeconds(3));
 
-
-            return _mapper.Map<IEnumerable<EventoViewModel>>(_eventoRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<EventoViewModel>>(dados);
         }
 
         [HttpGet]
