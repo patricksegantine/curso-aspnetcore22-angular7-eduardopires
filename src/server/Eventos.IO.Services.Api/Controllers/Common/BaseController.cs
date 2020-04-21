@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eventos.IO.Services.Api.Controllers.Common
 {
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [Produces("application/json")]
     public abstract class BaseController : ControllerBase
     {
         private readonly DomainNotificationHandler _notifications;

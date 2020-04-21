@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
+using Microsoft.Extensions.Caching.Memory;
+using System;
 
 namespace Eventos.IO.Tests.Api.UnitTests
 {
@@ -32,13 +34,15 @@ namespace Eventos.IO.Tests.Api.UnitTests
 
             var mockRepository = new Mock<IEventoRepository>();
             var mockUser = new Mock<IUser>();
+            var mockCache = new Mock<IMemoryCache>();
 
             eventosController = new EventosController(
                 mockNotification.Object,
                 mockMediator.Object,
                 mockRepository.Object,
                 mockMapper.Object,
-                mockUser.Object);
+                mockUser.Object,
+                mockCache.Object);
         }
 
         [Fact]
@@ -47,8 +51,8 @@ namespace Eventos.IO.Tests.Api.UnitTests
             // Arrange
             var eventoViewModel = new EventoViewModel();
             var eventoCommand = new RegistrarEventoCommand("Teste", "X", "XXX", 
-                System.DateTime.Now, System.DateTime.Now.AddDays(1), true, 0, true, "",
-                System.Guid.NewGuid(), System.Guid.NewGuid(),
+                DateTime.Now, DateTime.Now.AddDays(1), true, 0, true, "",
+                System.Guid.NewGuid(), Guid.NewGuid(),
                 new IncluirEnderecoEventoCommand(System.Guid.NewGuid(), "", "", "", "", "", "", "", null));
 
             // quando vc chamar o Map<xxx>(yyy) retorna o zzz

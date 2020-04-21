@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Eventos.IO.Infra.CrossCutting.Identity.Models.AccountViewModels;
 using Eventos.IO.Tests.Api.IntegrationTests.DTO;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Eventos.IO.Tests.Api.IntegrationTests
@@ -21,23 +21,22 @@ namespace Eventos.IO.Tests.Api.IntegrationTests
             // Arrange
             var user = new RegisterViewModel
             {
-                Nome = "Raquel C M Segantine",
-                CpfCnpj = "12345678900",
-                Email = "raquelcms@outlook.com",
-                Password = "Rcms1234*",
-                ConfirmPassword = "Rcms1234*"
+                Nome = "Patrick Segantine",
+                CpfCnpj = "00123456789",
+                Email = "patrick@email.com",
+                Password = "PSeg1234*",
+                ConfirmPassword = "PSeg1234*"
             };
 
             // Act
-            var postContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            var postContent = new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
 
-            var response = await Environment.Client.PostAsync("api/v1/nova-conta", postContent);
-            var conteudo = response.Content.ReadAsStringAsync().Result;
-            //var usuario = JsonConvert.DeserializeObject<UsuarioDTO>(conteudo);
+            var response = await Environment.Client.PostAsync("api/v1/Account/nova-conta", postContent);
+            var usuarioResult = JsonSerializer.Deserialize<UsuarioJsonDTO>(await response.Content.ReadAsStringAsync());
 
             // Assert
-            //response.EnsureSuccessStatusCode();
-            //var token = usuario.;
+            response.EnsureSuccessStatusCode();
+            //var token = usuarioResult.data.result;
             //Assert.NotEmpty(token);
         }
     }

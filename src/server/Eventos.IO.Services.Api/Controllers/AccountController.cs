@@ -19,6 +19,7 @@ using Eventos.IO.Services.Api.Controllers.Common;
 
 namespace Eventos.IO.Services.Api.Controllers
 {
+    [ApiVersion("1.0")]
     public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -50,9 +51,9 @@ namespace Eventos.IO.Services.Api.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("nova-conta")]
-        public async Task<IActionResult> Register(RegisterViewModel model, int version)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (version == 2) return Response(new { Message = "API V2 não disponível" });
+            //if (version == 2) return Response(new { Message = "API V2 não disponível" });
 
             var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,11 +15,20 @@ namespace Eventos.IO.Services.Api
 {
     public class Startup
     {
+        private readonly IWebHostEnvironment _env;
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            _env = env;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -63,10 +73,10 @@ namespace Eventos.IO.Services.Api
 
             // MediatR for Domain Events and Notifications
             services.AddMediatR(typeof(Startup));
-            
+
             // Versionamento do WebApi
-            services.AddApiVersioning("api/v{version}");
-            
+            services.AddApiVersioningConfig();
+
             // Swagger
             services.AddSwaggerConfig();
 
@@ -77,9 +87,9 @@ namespace Eventos.IO.Services.Api
             services.AddDependencyInjectionConfig();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
-            if (env.IsDevelopment())
+            if (_env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -88,6 +98,8 @@ namespace Eventos.IO.Services.Api
 
             app.UseStaticFiles();
 
+            // Este middleware analisa o conjunto de pontos finais definidos no aplicativo e 
+            // seleciona a melhor correspondência com base na solicitação.
             app.UseRouting();
 
             app.UseCors(c =>
@@ -103,11 +115,14 @@ namespace Eventos.IO.Services.Api
             // Ativa a compressão
             app.UseResponseCompression();
 
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllers();
             });
 
-            app.UseSwaggerConfig();
+            app.UseApiVersioning();
+
+            app.UseSwaggerConfig(provider);
         }
     }
 }

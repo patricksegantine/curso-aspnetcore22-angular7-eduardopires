@@ -16,6 +16,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Eventos.IO.Services.Api.Controllers
 {
+    [ApiVersion("1.0")]
     public class EventosController : BaseController
     {
         private readonly IEventoRepository _eventoRepository;
@@ -28,7 +29,7 @@ namespace Eventos.IO.Services.Api.Controllers
                                  IEventoRepository eventoRepository,
                                  IMapper mapper,
                                  IUser user, 
-                                 IMemoryCache cache
+                                 [FromServices]IMemoryCache cache
                                  ) : base(notifications, mediator, user)
         {
             _mediator = mediator;
@@ -39,7 +40,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("eventos")]
+        [Route("eventos"), MapToApiVersion("1.0")]
         public IEnumerable<EventoViewModel> Get()
         {
             const string cacheKey = "eventos";
@@ -49,7 +50,7 @@ namespace Eventos.IO.Services.Api.Controllers
                 dados = _eventoRepository.ObterTodos();
             
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromSeconds(3));
+                    .SetSlidingExpiration(TimeSpan.FromSeconds(60));
 
                 _cache.Set(cacheKey, dados);
             }
@@ -59,7 +60,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("eventos/{id:guid}")]
+        [Route("eventos/{id:guid}"), MapToApiVersion("1.0")]
         public EventoViewModel Get(Guid id, int version)
         {
             return _mapper.Map<EventoViewModel>(_eventoRepository.ObterPorId(id));
@@ -67,7 +68,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("eventos/categorias")]
+        [Route("eventos/categorias"), MapToApiVersion("1.0")]
         public IEnumerable<CategoriaViewModel> ObterCategorias()
         {
             return _mapper.Map<IEnumerable<CategoriaViewModel>>(_eventoRepository.ObterCategorias());
@@ -75,7 +76,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpGet]
         [Authorize(Policy = "PodeConsultar")]
-        [Route("eventos/meus-eventos")]
+        [Route("eventos/meus-eventos"), MapToApiVersion("1.0")]
         public IEnumerable<EventoViewModel> ObterMeusEventos()
         {
             // NOTA: OrganizadorId está na classe base e 
@@ -85,7 +86,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpGet]
         [Authorize(Policy = "PodeConsultar")]
-        [Route("eventos/meus-eventos/{id:guid}")]
+        [Route("eventos/meus-eventos/{id:guid}"), MapToApiVersion("1.0")]
         public IActionResult ObterMeuEventoPorId(Guid id)
         {
             var evento = _mapper.Map<EventoViewModel>(_eventoRepository.ObterMeuEventoPorId(id, OrganizadorId));
@@ -94,7 +95,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpPost]
         [Route("eventos")]
-        [Authorize(Policy = "PodeGravar")]
+        [Authorize(Policy = "PodeGravar"), MapToApiVersion("1.0")]
         public IActionResult Post(EventoViewModel eventoViewModel)
         {
             // o atributo ApiController veio para simplificar a codificação de Controllers...
@@ -119,7 +120,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpPut]
         [Route("eventos")]
-        [Authorize(Policy = "PodeGravar")]
+        [Authorize(Policy = "PodeGravar"), MapToApiVersion("1.0")]
         public IActionResult Put(EventoViewModel eventoViewModel)
         {
             var eventoCommand = _mapper.Map<AtualizarEventoCommand>(eventoViewModel);
@@ -130,7 +131,7 @@ namespace Eventos.IO.Services.Api.Controllers
 
         [HttpDelete]
         [Route("eventos/{id:guid}")]
-        [Authorize(Policy = "PodeExcluir")]
+        [Authorize(Policy = "PodeExcluir"), MapToApiVersion("1.0")]
         public IActionResult Delete(Guid id)
         {
             var eventoCommand = new ExcluirEventoCommand(id);
@@ -140,7 +141,7 @@ namespace Eventos.IO.Services.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "PodeGravar")]
+        [Authorize(Policy = "PodeGravar"), MapToApiVersion("1.0")]
         [Route("endereco")]
         public IActionResult Post(EnderecoViewModel enderecoViewModel)
         {
@@ -151,7 +152,7 @@ namespace Eventos.IO.Services.Api.Controllers
         }
 
         [HttpPut]
-        [Authorize(Policy = "PodeGravar")]
+        [Authorize(Policy = "PodeGravar"), MapToApiVersion("1.0")]
         [Route("endereco")]
         public IActionResult Put(EnderecoViewModel enderecoViewModel)
         {
